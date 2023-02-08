@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="topNav">
+      <div class="leftNav"><img src="images/logoTitlr.JPG" alt="StockManTextLogo"></div>
+      <div class="rightNav">
+        <li><a href="index.html"></a>首頁</li>
+        <li><a href=""></a>理財與股票</li>
+        <li><a href=""></a>查詢股票</li>
+        <li><a href=""></a>推薦券商與地圖</li>
+      </div>
+      <div class="navMenu"><i class='bx bx-menu'></i></div>
+      <div class="mobileMenu d-none">
+        <div class="menuClose"><i class='bx bx-x'></i></div>
+        <li><a href="index.html"></a>首頁</li>
+        <li><a href=""></a>理財與股票</li>
+        <li><a href=""></a>查詢股票</li>
+        <li><a href=""></a>推薦券商與地圖</li>
+      </div>
+    </nav>
+  </header>
+
+  <script>
+    let menuClose = document.getElementsByClassName("menuClose")[0];
+    let mobileMenu = document.getElementsByClassName("mobileMenu")[0];
+    let navMenu = document.getElementsByClassName("navMenu")[0];
+
+    menuClose.addEventListener('click', function(){
+      mobileMenu.classList.add("d-none");
+    })
+
+    navMenu.addEventListener('click', function(){
+      mobileMenu.classList.remove("d-none")
+      // console.log(mobileMenu.classList)
+    })
+
+  </script>
+</body>
+</html>
