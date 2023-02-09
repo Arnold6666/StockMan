@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header>
     <nav class="topNav">
@@ -29,20 +31,98 @@
     </nav>
   </header>
 
+  <!-- how to  -->
+  <section class="carousel">
+    <div class="carContainer">
+      <div class="carouselImg fade">
+        <img src="images/k1.jpg">
+        <div class="carouseltext">
+          <h3>Title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam quasi!</p>
+        </div>
+      </div>
+
+      <div class="carouselImg fade">
+        <img src="images/k2.jpg">
+        <div class="carouseltext">
+          <h3>Title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam quasi!</p>
+        </div>
+      </div>
+
+      <div class="carouselImg fade">
+        <img src="images/k3.jpg">
+        <div class="carouseltext">
+          <h3>Title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam quasi!</p>
+        </div>
+      </div>
+
+      <!-- Next and previous buttons -->
+      <a class="prevImg" id="prevImg" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="nextImg" id="nextImg" onclick="plusSlides(1)">&#10095;</a>
+      <div class="carouselDots">
+        <span class="dot" onclick="currentSlides(1)"></span>
+        <span class="dot" onclick="currentSlides(2)"></span>
+        <span class="dot" onclick="currentSlides(3)"></span>
+      </div>
+    </div>
+    
+  </section>
+
   <script>
+
+    // 漢堡選單js
     let menuClose = document.getElementsByClassName("menuClose")[0];
     let mobileMenu = document.getElementsByClassName("mobileMenu")[0];
     let navMenu = document.getElementsByClassName("navMenu")[0];
 
-    menuClose.addEventListener('click', function(){
+    menuClose.addEventListener('click', function () {
       mobileMenu.classList.add("d-none");
     })
 
-    navMenu.addEventListener('click', function(){
+    navMenu.addEventListener('click', function () {
       mobileMenu.classList.remove("d-none")
-      // console.log(mobileMenu.classList)
     })
 
+    // Carousel
+
+    let carouselIndex = 1;
+    showSlides(carouselIndex);
+
+    // let prevImg = document.getElementById("prevImg");
+    // prevImg.onclick = function(){
+      // showSlides(-1);
+    //   console.log(-1);
+    // }
+
+    function plusSlides(n){
+      showSlides(carouselIndex += n);
+    }
+
+    // function currentSlides(n){
+    //   showSlides(carouselIndex = n);
+    // }
+    
+    document.getElementById("prevImg").onclick = showSlides(1);
+
+    function showSlides(n){
+      let i;
+      let slides = document.getElementsByClassName("carouselImg");
+      let dots = document.getElementsByClassName("dot");
+      if(n > slides.length){carouselIndex = 1};
+      if(n < 1){carouselIndex = slides.length};
+      for(i = 0; i < slides.length; i++){
+        slides[i].style.display = "none";
+      }
+      for(i = 0; i < dots.length; i++){
+        dots[i].className = dots[i].className.replace(" dot-active", "");
+      }
+      slides[carouselIndex - 1].style.display = "block";
+      dots[carouselIndex - 1].className += " dot-active";
+
+    }
   </script>
 </body>
+
 </html>
