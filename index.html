@@ -38,7 +38,9 @@
         <img src="images/k1.jpg">
         <div class="carouseltext">
           <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam quasi!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
+            magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam
+            quasi!</p>
         </div>
       </div>
 
@@ -46,7 +48,9 @@
         <img src="images/k2.jpg">
         <div class="carouseltext">
           <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam quasi!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
+            magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam
+            quasi!</p>
         </div>
       </div>
 
@@ -54,20 +58,22 @@
         <img src="images/k3.jpg">
         <div class="carouseltext">
           <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam quasi!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
+            magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam
+            quasi!</p>
         </div>
       </div>
 
       <!-- Next and previous buttons -->
-      <a class="prevImg" id="prevImg" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="nextImg" id="nextImg" onclick="plusSlides(1)">&#10095;</a>
+      <a class="prevImg" id="prevImg">&#10094;</a>
+      <a class="nextImg" id="nextImg">&#10095;</a>
       <div class="carouselDots">
         <span class="dot" onclick="currentSlides(1)"></span>
         <span class="dot" onclick="currentSlides(2)"></span>
         <span class="dot" onclick="currentSlides(3)"></span>
       </div>
     </div>
-    
+
   </section>
 
   <script>
@@ -92,49 +98,59 @@
 
     // let prevImg = document.getElementById("prevImg");
     // prevImg.onclick = function(){
-      // showSlides(-1);
+    // showSlides(-1);
     //   console.log(-1);
     // }
 
-    function plusSlides(n){
+    function plusSlides(n) {
       showSlides(carouselIndex += n);
     }
 
-    // function currentSlides(n){
-    //   showSlides(carouselIndex = n);
-    // }
-    
-    document.getElementById("prevImg").onclick = showSlides(1);
+    function currentSlides(n) {
+      showSlides(carouselIndex = n);
+    }
 
-    function showSlides(n){
+    document.getElementById("prevImg").addEventListener("click", function () {
+      plusSlides(-1);
+      clearInterval(automove);
+      automove = setInterval(autoSlides, 5000)
+    });
+    document.getElementById("nextImg").addEventListener("click", function () {
+      plusSlides(1);
+      clearInterval(automove);
+      automove = setInterval(autoSlides, 5000)
+    });
+
+    function showSlides(n) {
       let i;
       let slides = document.getElementsByClassName("carouselImg");
       let dots = document.getElementsByClassName("dot");
-      if(n > slides.length){carouselIndex = 1};
-      if(n < 1){carouselIndex = slides.length};
-      for(i = 0; i < slides.length; i++){
+      if (n > slides.length) { carouselIndex = 1 };
+      if (n < 1) { carouselIndex = slides.length };
+      for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
       }
-      for(i = 0; i < dots.length; i++){
+      for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" dot-active", "");
       }
       slides[carouselIndex - 1].style.display = "block";
       dots[carouselIndex - 1].className += " dot-active";
     }
 
-    // autoslides
     let slideIndex = 0;
-    autoSlides();
-    function autoSlides(){
+    let automove = setInterval(autoSlides, 5000); //透過變數已供clearInterval使用
+    function autoSlides() {
       let i;
       let slides = document.getElementsByClassName("carouselImg");
-      for(i = 0; i < slides.length; i++){
+      for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
       }
       slideIndex++;
-      if(slideIndex > slides.length){slideIndex = 1}
+      if (slideIndex > slides.length) { slideIndex = 1 }
       slides[slideIndex - 1].style.display = "block";
-      setTimeout(autoSlides, 2000); 
+
+      let d = new Date();
+      console.log(d)
     }
   </script>
 </body>
