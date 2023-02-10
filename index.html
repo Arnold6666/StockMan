@@ -120,7 +120,21 @@
       }
       slides[carouselIndex - 1].style.display = "block";
       dots[carouselIndex - 1].className += " dot-active";
+    }
 
+    // autoslides
+    let slideIndex = 0;
+    autoSlides();
+    function autoSlides(){
+      let i;
+      let slides = document.getElementsByClassName("carouselImg");
+      for(i = 0; i < slides.length; i++){
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if(slideIndex > slides.length){slideIndex = 1}
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(autoSlides, 2000); 
     }
   </script>
 </body>
