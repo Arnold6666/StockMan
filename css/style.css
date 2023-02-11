@@ -40,7 +40,6 @@ a {
 
 img {
   max-width: 100%;
-  height: auto;
 }
 
 p {
@@ -51,25 +50,43 @@ p {
   display: none !important;
 }
 
+.d-flex {
+  display: flex;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.container {
+  max-width: 1280px;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
 header {
   height: 56px;
   background-color: rgb(20, 22, 15);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 }
 
 .topNav {
   width: 1280px;
   display: flex;
-  color: white;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 }
 .topNav .leftNav {
   display: flex;
   align-items: center;
-  margin-right: auto;
 }
 .topNav .leftNav img {
   height: 50px;
@@ -78,6 +95,12 @@ header {
   display: none;
   width: 400px;
   justify-content: space-around;
+}
+.topNav .rightNav li a {
+  color: rgb(141, 141, 141);
+}
+.topNav .rightNav li.active a {
+  color: white;
 }
 .topNav .navMenu {
   font-size: 2rem;
@@ -94,7 +117,10 @@ header {
   width: 100%;
   text-align: center;
   font-size: 24px;
+  font-weight: 300;
   color: white;
+  padding: 50px 0;
+  row-gap: 20px;
 }
 .topNav .menuClose {
   font-size: 2rem;
@@ -116,23 +142,55 @@ header {
   }
 }
 
+.origin {
+  background-color: #dddddd;
+  padding-top: 56px;
+}
+.origin .container h2 {
+  font-size: 56px;
+  font-weight: 400;
+  padding-left: 40px;
+}
+.origin .container p {
+  line-height: 1.8;
+  padding: 0 60px;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  padding-bottom: 20px;
+  margin: 0;
+}
+.origin .container p a {
+  color: rgb(0, 96, 109);
+  font-size: 18px;
+  font-weight: 500;
+}
+.origin .container p.quote {
+  padding: 0 80px;
+  font-weight: 400;
+}
+.origin .container p.quoteOrigin {
+  text-align: end;
+  padding-left: 0 80px;
+  font-size: 20px;
+}
+
 .carContainer {
-  max-width: 1280px;
   height: auto;
-  overflow: hidden;
   position: relative;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .carouselImg {
   display: none;
+  max-height: 853px;
 }
 .carouselImg img {
   height: 100%;
-  overflow: hidden;
 }
 
-.prevImg, .nextImg {
+.prevImg,
+.nextImg {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -154,7 +212,8 @@ header {
   border-radius: 3px 0 0 3px;
 }
 
-.prevImg:hover, .nextImg:hover {
+.prevImg:hover,
+.nextImg:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: black;
 }
@@ -190,7 +249,8 @@ header {
   transition: background-color 0.6 ease;
 }
 
-.dot-active, .dot:hover {
+.dot-active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -206,4 +266,95 @@ header {
   to {
     opacity: 1;
   }
+}
+footer {
+  background-color: rgb(20, 22, 15);
+}
+footer img {
+  width: 150px;
+  padding: 15px 0;
+}
+footer .f-content {
+  justify-content: space-around;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  font-size: 24px;
+}
+footer .f-content .f-link {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+footer .f-content .f-link li {
+  margin-bottom: 20px;
+}
+footer .f-content .f-link li a {
+  color: white;
+  font-weight: 300;
+}
+@media screen and (min-width: 768px) {
+  footer .f-content {
+    grid-template-columns: 1fr 3fr;
+  }
+  footer .f-content .f-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.basicConcept {
+  padding-top: 56px;
+}
+.basicConcept h1 {
+  text-align: center;
+  background-color: #dddddd;
+  font-size: 36px;
+  padding: 15px 0;
+  font-weight: 500;
+}
+.basicConcept .basicContent {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-bottom: 20px;
+}
+.basicConcept .basicContent .slideMenu {
+  margin-top: 20px;
+  background-color: #bbb;
+  padding: 15px;
+}
+.basicConcept .basicContent .slideMenu li {
+  font-size: 22px;
+  padding: 15px;
+  background-color: #d6d6d6;
+}
+.basicConcept .basicContent .slideMenu ul li {
+  padding-left: 25px;
+  font-size: 18px;
+}
+.basicConcept .basicContent .slideMenu a {
+  color: black;
+}
+.basicConcept .basicContent .mainContent {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+.basicConcept .basicContent .mainContent h2 {
+  font-size: 24px;
+}
+.basicConcept .basicContent .mainContent h3 {
+  padding-left: 10px;
+  font-weight: 400;
+  font-size: 20px;
+}
+.basicConcept .basicContent .mainContent p {
+  margin-top: 5px;
+  font-size: 18px;
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+.basicConcept .basicContent .mainContent img {
+  margin-top: 10px;
+  border-radius: 30px;
 }/*# sourceMappingURL=style.css.map */

@@ -12,33 +12,48 @@
 
 <body>
   <header>
-    <nav class="topNav">
+      <nav class="topNav">
       <div class="leftNav"><img src="images/logoTitlr.JPG" alt="StockManTextLogo"></div>
       <div class="rightNav">
-        <li><a href="index.html"></a>首頁</li>
-        <li><a href=""></a>理財與股票</li>
-        <li><a href=""></a>查詢股票</li>
-        <li><a href=""></a>推薦券商與地圖</li>
+        <li class="active"><a href="index.html">首頁</a></li>
+        <li><a href="why.html">理財與股票</a></li>
+        <li><a href="search.html">查詢股票</a></li>
+        <li><a href="recommend.html">推薦券商與地圖</a></li>
       </div>
       <div class="navMenu"><i class='bx bx-menu'></i></div>
       <div class="mobileMenu d-none">
         <div class="menuClose"><i class='bx bx-x'></i></div>
-        <li><a href="index.html"></a>首頁</li>
-        <li><a href=""></a>理財與股票</li>
-        <li><a href=""></a>查詢股票</li>
-        <li><a href=""></a>推薦券商與地圖</li>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="why.html">理財與股票</a></li>
+        <li><a href="search.html">查詢股票</a></li>
+        <li><a href="recommend.html">推薦券商與地圖</a></li>
       </div>
     </nav>
   </header>
 
-  <!-- how to  -->
+  <!-- origin -->
+  <section class="origin">
+    <div class="container m-auto">
+      <div class="originContent ">
+        <h2>創立初衷</h2>
+        <p>
+          希望對於社會新鮮人，可以透過網站內容建立理財觀念，透過設定長期目標，有效規劃理財，因為現金會隨著通貨膨脹減少實質購買力，同時資產的價格也會隨之上漲，其中部分資產類別的增值有機會超過通貨膨脹幅度，因此在情況許可下，在個人財務規劃中，配置部分的資產是對於財產是可以達到分散風險，甚至有機會能擊敗通膨，讓個人財產增幅大於通膨。資產的類別又分為許多種，其中股票取得的難易度相對容易，且金額可大可小。因此本網站想透過易懂的介紹，讓一般人能更深入的了解股票，並且透過本網站的功能查詢有興趣的公司股票。而股票是甚麼呢?
+          <a href="why.html">→學習更多</a></p>
+        <p class="quote">股份公司為了籌集資金，發給投資人的憑證。簡單來說，股票投資，就是擁有那家公司部分的所有權，有福同享，有難同當；當公司賺錢時，就能依照持股比例分配盈餘，反之，也得承受股票投資虧損的風險。
+        </p>
+        <p class="quoteOrigin">── 引用自 日盛證券</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- carousel  -->
   <section class="carousel">
-    <div class="carContainer">
+    <div class="carContainer container">
       <div class="carouselImg fade">
         <img src="images/k1.jpg">
         <div class="carouseltext">
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
+          <h3>Title 1</h3>
+          <p class="imgText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
             magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam
             quasi!</p>
         </div>
@@ -47,7 +62,7 @@
       <div class="carouselImg fade">
         <img src="images/k2.jpg">
         <div class="carouseltext">
-          <h3>Title</h3>
+          <h3>Title 2</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
             magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam
             quasi!</p>
@@ -57,7 +72,7 @@
       <div class="carouselImg fade">
         <img src="images/k3.jpg">
         <div class="carouseltext">
-          <h3>Title</h3>
+          <h3>Title 3</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore quia blanditiis! Non harum alias
             magnam unde laborum maiores repudiandae quisquam ab vel assumenda? Temporibus placeat omnis nesciunt quam
             quasi!</p>
@@ -68,91 +83,34 @@
       <a class="prevImg" id="prevImg">&#10094;</a>
       <a class="nextImg" id="nextImg">&#10095;</a>
       <div class="carouselDots">
-        <span class="dot" onclick="currentSlides(1)"></span>
-        <span class="dot" onclick="currentSlides(2)"></span>
-        <span class="dot" onclick="currentSlides(3)"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
     </div>
 
   </section>
 
-  <script>
-
-    // 漢堡選單js
-    let menuClose = document.getElementsByClassName("menuClose")[0];
-    let mobileMenu = document.getElementsByClassName("mobileMenu")[0];
-    let navMenu = document.getElementsByClassName("navMenu")[0];
-
-    menuClose.addEventListener('click', function () {
-      mobileMenu.classList.add("d-none");
-    })
-
-    navMenu.addEventListener('click', function () {
-      mobileMenu.classList.remove("d-none")
-    })
-
-    // Carousel
-
-    let carouselIndex = 1;
-    showSlides(carouselIndex);
-
-    // let prevImg = document.getElementById("prevImg");
-    // prevImg.onclick = function(){
-    // showSlides(-1);
-    //   console.log(-1);
-    // }
-
-    function plusSlides(n) {
-      showSlides(carouselIndex += n);
-    }
-
-    function currentSlides(n) {
-      showSlides(carouselIndex = n);
-    }
-
-    document.getElementById("prevImg").addEventListener("click", function () {
-      plusSlides(-1);
-      clearInterval(automove);
-      automove = setInterval(autoSlides, 5000)
-    });
-    document.getElementById("nextImg").addEventListener("click", function () {
-      plusSlides(1);
-      clearInterval(automove);
-      automove = setInterval(autoSlides, 5000)
-    });
-
-    function showSlides(n) {
-      let i;
-      let slides = document.getElementsByClassName("carouselImg");
-      let dots = document.getElementsByClassName("dot");
-      if (n > slides.length) { carouselIndex = 1 };
-      if (n < 1) { carouselIndex = slides.length };
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" dot-active", "");
-      }
-      slides[carouselIndex - 1].style.display = "block";
-      dots[carouselIndex - 1].className += " dot-active";
-    }
-
-    let slideIndex = 0;
-    let automove = setInterval(autoSlides, 5000); //透過變數已供clearInterval使用
-    function autoSlides() {
-      let i;
-      let slides = document.getElementsByClassName("carouselImg");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-
-      let d = new Date();
-      console.log(d)
-    }
-  </script>
+  <!-- footer -->
+  <footer>
+    <div class="m-auto container">
+      <div class="f-content d-grid">
+        <img src="images/logo.JPG" alt="">
+        <div class="f-link">
+          <li class="nav-item text-center">
+            <a class="nav-link active" aria-current="page" href="index.html">前往首頁</a>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link" href="search.html">查詢股票</a>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link" href="qa.html">常見問題</a>
+          </li>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/sotck.js"></script>
 </body>
 
 </html>
