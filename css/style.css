@@ -66,6 +66,14 @@ p {
   margin: 0 auto;
 }
 
+.bg-gray {
+  background-color: #d6d6d6;
+}
+
+.pt-3 {
+  padding-top: 10px;
+}
+
 header {
   height: 56px;
   background-color: rgb(20, 22, 15);
@@ -329,6 +337,9 @@ footer .f-content .f-link li a {
   padding: 15px;
   background-color: #d6d6d6;
 }
+.basicConcept .basicContent .slideMenu ul {
+  border-bottom: 2px solid white;
+}
 .basicConcept .basicContent .slideMenu ul li {
   padding-left: 25px;
   font-size: 18px;
@@ -345,16 +356,42 @@ footer .f-content .f-link li a {
 }
 .basicConcept .basicContent .mainContent h3 {
   padding-left: 10px;
+  padding-right: 20px;
   font-weight: 400;
   font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.basicConcept .basicContent .mainContent h3 span {
+  font-size: 24px;
+  font-weight: 700;
 }
 .basicConcept .basicContent .mainContent p {
   margin-top: 5px;
   font-size: 18px;
-  padding-left: 20px;
+  padding: 0 20px;
   margin-bottom: 0;
+  text-align: justify;
 }
 .basicConcept .basicContent .mainContent img {
   margin-top: 10px;
-  border-radius: 30px;
+  border-radius: 5%;
+  padding: 0 20px;
+}
+.basicConcept .basicContent .mainContent .subContent {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.basicConcept .basicContent .mainContent .subContentContainer {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  overflow: hidden;
+}
+.basicConcept .basicContent .mainContent .subContentContainer div {
+  display: flex;
+  justify-content: center;
+}
+.basicConcept .basicContent .mainContent .stockR {
+  margin-bottom: 15px;
 }/*# sourceMappingURL=style.css.map */
