@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="topNav">
+      <div class="leftNav"><img src="images/logoTitlr.JPG" alt="StockManTextLogo"></div>
+      <div class="rightNav">
+        <li><a href="index.html">首頁</a></li>
+        <li ><a href="why.html">理財與股票</a></li>
+        <li class="active"><a href="search.html">查詢股票</a></li>
+        <li><a href="recommend.html">推薦券商與地圖</a></li>
+      </div>
+      <div class="navMenu"><i class='bx bx-menu'></i></div>
+      <div class="mobileMenu d-none">
+        <div class="menuClose"><i class='bx bx-x'></i></div>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="why.html">理財與股票</a></li>
+        <li><a href="search.html">查詢股票</a></li>
+        <li><a href="recommend.html">推薦券商與地圖</a></li>
+      </div>
+    </nav>
+  </header>
+
+  <!-- search -->
+  <section class="search">
+    <h2 class="py-3">昨日成交前20名</h2>
+    <div class="searchContainer">
+      <div id="top20">
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- footer -->
+  <footer>
+    <div class="m-auto container">
+      <div class="f-content d-grid">
+        <img src="images/logo.JPG" alt="">
+        <div class="f-link">
+          <li class="nav-item text-center">
+            <a class="nav-link active" aria-current="page" href="index.html">前往首頁</a>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link" href="search.html">查詢股票</a>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link" href="qa.html">常見問題</a>
+          </li>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/search.js"></script>
+  <script>
+    var acc = document.getElementsByClassName("subTitle");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        let span = this.getElementsByTagName("span")[0].innerHTML;
+        if (span === "+") {
+          this.getElementsByTagName("span")[0].innerHTML = "-";
+        } else if (span === "-") {
+          this.getElementsByTagName("span")[0].innerHTML = "+"
+        }
+
+
+        /* Toggle between hiding and showing the active panel */
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

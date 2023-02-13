@@ -425,3 +425,29 @@ footer {
     }
   }
 }
+
+// basicConcept end
+.search{
+  padding-top: 56px;
+  
+  h2{
+    padding: $d3 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: $font-medium;
+  }
+
+  #top20{
+    display: flex;
+    justify-content: center;
+    padding-bottom: $d3;
+
+    table{
+      text-align: center;
+      border-collapse: collapse;
+    }
+  }
+}
+
+
+// 
