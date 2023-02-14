@@ -34,7 +34,7 @@
 
 // header
 header {
-  height: 56px;
+  height: 64px;
   background-color: $nav-color;
   display: flex;
   justify-content: center;
@@ -63,8 +63,8 @@ header {
   .rightNav {
     display: none;
     width: 400px;
+    font-size: 18px;
     justify-content: space-around;
-
 
     li {
       a {
@@ -81,6 +81,7 @@ header {
 
   .navMenu {
     font-size: 2rem;
+    color: white;
     cursor: pointer;
   }
 
@@ -427,10 +428,28 @@ footer {
 }
 
 // basicConcept end
+
+// searchPage
 .search{
-  padding-top: 56px;
+  padding-top: 64px;
+  width: 100%;
+
+  .searchContainer{
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+
+    .l-searchRecord{
+      width: 30%;
+    }
+
+  }
+}
+
+.top20Section{
+  padding-top: $d3;
   
-  h2{
+  .top20Title{
     padding: $d3 0;
     text-align: center;
     font-size: 30px;

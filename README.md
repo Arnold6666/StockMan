@@ -1,2 +1,2 @@
 # personalProjectWithmyCSS
-Personal Project in iSpan with my css(no CS Splugin)
+Personal Project in iSpan with my css(no CSS Splugin)

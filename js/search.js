@@ -57,8 +57,11 @@ function getLastTradeDate() {
   if (day.length == 1) {
     day = "0" + day;
   }
+  let date = year + month + day;
+
+  date = (parseInt(date) - 1).toString();
   
-  return year + month + day;
+  return date;
 }
 
 // document.getElementById("searchStockBtn").onclick = function () {
@@ -119,6 +122,9 @@ function getLastTradeDate() {
 window.onload = function () {
   let date = getLastTradeDate();
 
+  
+  // console.log(date);
+
   function top20stocks(idname) {
     fetch(`https://www.twse.com.tw/exchangeReport/MI_INDEX20?&date=${date}`)
       .then((res) => {
@@ -130,7 +136,7 @@ window.onload = function () {
         if(result.stat ==="很抱歉，沒有符合條件的資料!"){
 
         }
-        console.log(result)
+        // console.log(result)
         let data = result.data;
         let tableTitle = result.fields;
 

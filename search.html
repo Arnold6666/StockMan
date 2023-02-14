@@ -31,16 +31,34 @@
     </nav>
   </header>
 
-  <!-- search -->
+  <!-- search & record -->
   <section class="search">
-    <h2 class="py-3">昨日成交前20名</h2>
+    <div class="searchContainer">
+      <div class="l-searchRecord">
+        <ul id="recordList">
+          <li>2330台積電</li>
+          <li>9947茂順</li>
+          <li>2247怡利電</li>
+        </ul>
+      </div>
+      <div class="r-search">
+        <h3 class="searchTitle">股票代碼</h3>
+      <input type="number" id="searchStock" class="" placeholder="請輸入股票代碼">
+      <button id="searchStockBtn" class="">查詢</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- top20 -->
+  <section class="top20Section">
+    <h2 class="top20Title">昨日成交前20名</h2>
     <div class="searchContainer">
       <div id="top20">
 
       </div>
     </div>
   </section>
-
 
   <!-- footer -->
   <footer>
@@ -62,30 +80,6 @@
     </div>
   </footer>
   <script src="js/search.js"></script>
-  <script>
-    var acc = document.getElementsByClassName("subTitle");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function () {
-        let span = this.getElementsByTagName("span")[0].innerHTML;
-        if (span === "+") {
-          this.getElementsByTagName("span")[0].innerHTML = "-";
-        } else if (span === "-") {
-          this.getElementsByTagName("span")[0].innerHTML = "+"
-        }
-
-
-        /* Toggle between hiding and showing the active panel */
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    }
-  </script>
 </body>
 
 </html>

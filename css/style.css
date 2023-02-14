@@ -75,7 +75,7 @@ p {
 }
 
 header {
-  height: 56px;
+  height: 64px;
   background-color: rgb(20, 22, 15);
   display: flex;
   justify-content: center;
@@ -102,6 +102,7 @@ header {
 .topNav .rightNav {
   display: none;
   width: 400px;
+  font-size: 18px;
   justify-content: space-around;
 }
 .topNav .rightNav li a {
@@ -112,6 +113,7 @@ header {
 }
 .topNav .navMenu {
   font-size: 2rem;
+  color: white;
   cursor: pointer;
 }
 .topNav .mobileMenu {
@@ -210,9 +212,7 @@ header {
   font-size: 36px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .nextImg {
@@ -285,8 +285,7 @@ footer img {
 footer .f-content {
   justify-content: space-around;
   align-items: center;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
+  column-gap: 30px;
   font-size: 24px;
 }
 footer .f-content .f-link {
@@ -397,20 +396,33 @@ footer .f-content .f-link li a {
 }
 
 .search {
-  padding-top: 56px;
+  padding-top: 64px;
+  width: 100%;
 }
-.search h2 {
+.search .searchContainer {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+}
+.search .searchContainer .l-searchRecord {
+  width: 30%;
+}
+
+.top20Section {
+  padding-top: 15px;
+}
+.top20Section .top20Title {
   padding: 15px 0;
   text-align: center;
   font-size: 30px;
   font-weight: 500;
 }
-.search #top20 {
+.top20Section #top20 {
   display: flex;
   justify-content: center;
   padding-bottom: 15px;
 }
-.search #top20 table {
+.top20Section #top20 table {
   text-align: center;
   border-collapse: collapse;
 }/*# sourceMappingURL=style.css.map */
