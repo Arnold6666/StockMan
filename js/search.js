@@ -136,7 +136,7 @@ window.onload = function () {
         if(result.stat ==="很抱歉，沒有符合條件的資料!"){
 
         }
-        // console.log(result)
+        console.log(result);
         let data = result.data;
         let tableTitle = result.fields;
 
@@ -149,7 +149,7 @@ window.onload = function () {
         // console.log(tableTitle);
 
         let row = table.insertRow();
-        for (let i = 0; i < tableTitle.length; i++) {
+        for (let i = 0; i < tableTitle.length - 2; i++) {
           let td = row.insertCell();
           td.innerHTML = tableTitle[i];
         }
@@ -158,7 +158,7 @@ window.onload = function () {
         // 取資料
         for (let i = 0; i < data.length; i++) {
           let tableRow = table.insertRow();
-          for (let j = 0; j < data[i].length; j++) {
+          for (let j = 0; j < data[i].length - 2; j++) {
             let rowCell = tableRow.insertCell();
             rowCell.innerHTML = data[i][j];
           }
