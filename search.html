@@ -42,9 +42,19 @@
         </ul>
       </div>
       <div class="r-search">
-        <h3 class="searchTitle">股票代碼</h3>
-        <input type="number" id="searchStock" class="" placeholder="請輸入股票代碼">
-        <button id="searchStockBtn" class="">查詢</button>
+        <div class="SContainer">
+          <h3 class="searchTitle">股票代碼</h3>
+          <div class="searchInput">
+            <select name="stockType" id="stockType">
+              <option value="tse">上市</option>
+              <option value="otc">上櫃</option>
+            </select>
+            <input id="searchStock" class="" placeholder="請輸入股票代碼">
+            <button id="searchStockBtn" class="">查詢</button>
+          </div>
+        </div>
+        <div id="result" class="result"></div>
+
       </div>
     </div>
   </section>
@@ -81,7 +91,7 @@
   </footer>
   <!-- <script src="js/search.js"></script> -->
   <script>
-  // 漢堡選單RWD js
+    // 漢堡選單RWD js
     let menuClose = document.getElementsByClassName("menuClose")[0];
     let mobileMenu = document.getElementsByClassName("mobileMenu")[0];
     let navMenu = document.getElementsByClassName("navMenu")[0];
@@ -147,67 +157,127 @@
       return date;
     }
 
-    // document.getElementById("searchStockBtn").onclick = function () {
-    //   let stockNum = document.getElementById("searchStock").value;
+    function getTenDay(date, stockNum) {
 
-    //   date = getTodayDate();
+      fetch(`https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=${date}&stockNo=${stockNum}`)
+        .then((res) => {
+          const data = res.json();
+          return data;
+        })
+        .then((stocks) => {
 
-    //   fetch(`https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=${date}&stockNo=${stockNum}`)
-    //     .then((res) => {
-    //       const data = res.json();
-    //       return data;
-    //     })
-    //     .then((stocks) => {
+          let container = document.getElementById("result");
+          container.innerHTML = "";
+          let h1 = document.createElement("h1")
+          let title = document.createTextNode(stocks.title);
+          h1.style.textAlign = "center"
+          h1.appendChild(title);
+          container.appendChild(h1);
 
-    //       let container = document.getElementById("result");
-    //       container.innerHTML = "";
-    //       let h1 = document.createElement("h1")
-    //       let title = document.createTextNode(stocks.title);
-    //       h1.style.textAlign = "center"
-    //       h1.appendChild(title);
-    //       container.appendChild(h1);
+          // console.log(stocks)//除錯用
 
-    //       // console.log(stocks)//除錯用
+          let table = document.createElement("table");
+          table.style.margin = "0 auto";
+          table.setAttribute("border", "1");
+          table.style.borderCollapse = "collapse";
+          table.style.textAlign = "center";
+          table.style.width = "800px";
 
-    //       let table = document.createElement("table");
-    //       table.style.margin = "0 auto";
-    //       table.setAttribute("border", "1");
-    //       table.style.borderCollapse = "collapse";
-    //       table.style.textAlign = "center";
-    //       table.style.width = "800px";
+          container.appendChild(table);
 
-    //       container.appendChild(table);
+          let tHead = stocks.fields;
+          let row = table.insertRow();
+          for (let i = 0; i < tHead.length; i++) {
+            let td = row.insertCell();
+            td.innerHTML = tHead[i];
+          }
 
-    //       let tHead = stocks.fields;
-    //       let row = table.insertRow();
-    //       for (let i = 0; i < tHead.length; i++) {
-    //         let td = row.insertCell();
-    //         td.innerHTML = tHead[i];
-    //       }
+          let tContent = stocks.data;
 
-    //       let tContent = stocks.data;
+          // console.log(tContent); //除錯用
 
-    //       // console.log(tContent); //除錯用
+          let tContentL = tContent.length - 1;
+          for (let i = tContentL; i > 0; i--) {
+            let tableRow = table.insertRow();
+            for (let j = 0; j < tContent[i].length; j++) {
+              let rowTd = tableRow.insertCell();
+              rowTd.innerHTML = tContent[i][j];
+            }
+          }
 
-    //       let tContentL = tContent.length - 1;
-    //       for (let i = tContentL; i > 0; i--) {
-    //         let tableRow = table.insertRow();
-    //         for (let j = 0; j < tContent[i].length - 1; j++) {
-    //           let rowTd = tableRow.insertCell();
-    //           rowTd.innerHTML = tContent[i][j];
-    //         }
-    //       }
+        });
 
-    //     });
-    //   // https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20230113&stockNo=2330
-    // }
+    }
+
+    function immediateStock(stocktype, stockNum) {
+
+      // https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=${stocktype}_${stockNum}.tw&json=1&delay=0
+      fetch(`https://mis.twse.com.tw/stock/api/getStock.jsp?ch=2330.tw&json=1`)
+        .then((res) => {
+          const data = res.json();
+          return data;
+        })
+        .then((stock) => {
+          console.log(stock);
+
+          // let container = document.getElementById("result");
+          // container.innerHTML = "";
+          // let h1 = document.createElement("h1")
+          // let title = document.createTextNode(stocks.title);
+          // h1.style.textAlign = "center"
+          // h1.appendChild(title);
+          // container.appendChild(h1);
+
+          // console.log(stocks)//除錯用
+
+          // let table = document.createElement("table");
+          // table.style.margin = "0 auto";
+          // table.setAttribute("border", "1");
+          // table.style.borderCollapse = "collapse";
+          // table.style.textAlign = "center";
+          // table.style.width = "800px";
+
+          // container.appendChild(table);
+
+          // let tHead = stocks.fields;
+          // let row = table.insertRow();
+          // for (let i = 0; i < tHead.length; i++) {
+          //   let td = row.insertCell();
+          //   td.innerHTML = tHead[i];
+          // }
+
+          // let tContent = stocks.data;
+
+          // console.log(tContent); //除錯用
+
+          // let tContentL = tContent.length - 1;
+          // for (let i = tContentL; i > 0; i--) {
+          //   let tableRow = table.insertRow();
+          //   for (let j = 0; j < tContent[i].length; j++) {
+          //     let rowTd = tableRow.insertCell();
+          //     rowTd.innerHTML = tContent[i][j];
+          //   }
+          // }
+
+        });
+
+    }
+
+
+    document.getElementById("searchStockBtn").onclick = function () {
+      let stockNum = document.getElementById("searchStock").value;
+      let stockType = document.getElementById("stockType").value;
+
+      // date = getTodayDate();
+
+      immediateStock(stockType, stockNum)
+    }
 
     window.onload = function () {
       let date = getLastTradeDate();
-
-
       // console.log(date);
 
+      document.getElementsByClassName("top20Title")[0].innerHTML = `${date} 成交股數前20名`
       function top20stocks(idname) {
         fetch(`https://www.twse.com.tw/exchangeReport/MI_INDEX20?&date=${date}`)
           .then((res) => {
@@ -216,10 +286,10 @@
           })
           .then((result) => {
 
-            if (result.stat === "很抱歉，沒有符合條件的資料!") {
+            // if (result.stat === "很抱歉，沒有符合條件的資料!") {
 
-            }
-            console.log(result);
+            // }
+            // console.log(result);
             let data = result.data;
             let tableTitle = result.fields;
 
@@ -253,7 +323,8 @@
 
       top20stocks("top20");
     }
-    </script>
+  
+  </script>
 </body>
 
 </html>

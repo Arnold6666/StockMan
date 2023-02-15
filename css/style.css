@@ -499,9 +499,39 @@ footer .f-content .f-link li a {
   width: 1280px;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
 .search .searchContainer .l-searchRecord {
-  width: 30%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  background-color: #bbb;
+}
+.search .searchContainer .r-search {
+  padding-bottom: 15px;
+  width: 70%;
+  background-color: goldenrod;
+}
+.search .searchContainer .r-search .SContainer {
+  width: 100%;
+}
+.search .searchContainer .r-search .SContainer h3 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+}
+.search .searchContainer .r-search .SContainer .searchInput {
+  display: flex;
+  justify-content: center;
+}
+.search .searchContainer .r-search .SContainer .searchInput select, .search .searchContainer .r-search .SContainer .searchInput input, .search .searchContainer .r-search .SContainer .searchInput button {
+  font-size: 24px;
+  border: 2px gray solid;
+}
+.search .searchContainer .r-search .SContainer .searchInput select {
+  padding: 0 15px;
+  border-right: none;
 }
 
 .top20Section {

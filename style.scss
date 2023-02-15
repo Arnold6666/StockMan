@@ -559,9 +559,45 @@ footer {
     width: 1280px;
     margin: 0 auto;
     display: flex;
+    justify-content: center;
+    padding-top: $d4;
 
     .l-searchRecord {
-      width: 30%;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      background-color: #bbb;
+    }
+
+    .r-search{
+      padding-bottom: $d3;
+      width: 70%;
+      background-color: goldenrod;
+
+      .SContainer{
+        width: 100%;
+
+        h3{
+          text-align: center;
+          font-size: 30px;
+          font-weight: $font-regular;
+        }
+
+        .searchInput{
+          display: flex;
+          justify-content: center;
+          select, input, button{
+            font-size: 24px;
+            border: 2px gray solid;
+          }
+
+          select{
+            padding: 0 $d3;
+            border-right: none;
+          }
+          
+        }
+      }
     }
 
   }
