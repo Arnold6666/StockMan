@@ -563,10 +563,25 @@ footer {
     padding-top: $d4;
 
     .l-searchRecord {
+      border: 1px solid black;
       width: 20%;
       display: flex;
+      align-items: center;
       justify-content: center;
       background-color: #bbb;
+      flex-direction: column;
+
+      h3{
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid black;
+        font-size: 24px;
+        font-weight: $font-medium;
+      }
+
+      li{
+        font-size: 20px;
+      }
     }
 
     .r-search{

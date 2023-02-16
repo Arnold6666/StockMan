@@ -35,6 +35,7 @@
   <section class="search">
     <div class="searchContainer">
       <div class="l-searchRecord">
+        <h3>搜尋紀錄</h3>
         <ul id="recordList">
           <li>2330台積電</li>
           <li>9947茂順</li>
@@ -45,10 +46,6 @@
         <div class="SContainer">
           <h3 class="searchTitle">股票代碼</h3>
           <div class="searchInput">
-            <select name="stockType" id="stockType">
-              <option value="tse">上市</option>
-              <option value="otc">上櫃</option>
-            </select>
             <input id="searchStock" class="" placeholder="請輸入股票代碼">
             <button id="searchStockBtn" class="">查詢</button>
           </div>
@@ -209,121 +206,95 @@
 
     }
 
-    function immediateStock(stocktype, stockNum) {
-
-      // https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=${stocktype}_${stockNum}.tw&json=1&delay=0
-      fetch(`https://mis.twse.com.tw/stock/api/getStock.jsp?ch=2330.tw&json=1`)
+    function top20stocks(idname) {
+      let date = getLastTradeDate();
+      fetch(`https://www.twse.com.tw/exchangeReport/MI_INDEX20?&date=${date}`)
         .then((res) => {
           const data = res.json();
           return data;
         })
-        .then((stock) => {
-          console.log(stock);
+        .then((result) => {
 
-          // let container = document.getElementById("result");
-          // container.innerHTML = "";
-          // let h1 = document.createElement("h1")
-          // let title = document.createTextNode(stocks.title);
-          // h1.style.textAlign = "center"
-          // h1.appendChild(title);
-          // container.appendChild(h1);
+          console.log(result);
+          let data = result.data;
+          let tableTitle = result.fields;
 
-          // console.log(stocks)//除錯用
+          let container = document.getElementById(`${idname}`);
+          let table = document.createElement("table");
+          table.classList.add("top20table");
+          table.setAttribute("border", "1");
 
-          // let table = document.createElement("table");
-          // table.style.margin = "0 auto";
-          // table.setAttribute("border", "1");
-          // table.style.borderCollapse = "collapse";
-          // table.style.textAlign = "center";
-          // table.style.width = "800px";
+          // 取欄位名稱
+          // console.log(tableTitle);
 
-          // container.appendChild(table);
+          let row = table.insertRow();
+          for (let i = 0; i < tableTitle.length - 2; i++) {
+            if (i == 4 || i == 6 || i == 7 || i == 9) { continue }
+            let td = row.insertCell();
+            td.innerHTML = tableTitle[i];
+          }
+          container.appendChild(table);
 
-          // let tHead = stocks.fields;
-          // let row = table.insertRow();
-          // for (let i = 0; i < tHead.length; i++) {
-          //   let td = row.insertCell();
-          //   td.innerHTML = tHead[i];
-          // }
+          // 取資料
+          for (let i = 0; i < data.length; i++) {
+            let tableRow = table.insertRow();
 
-          // let tContent = stocks.data;
+            for (let j = 0; j < data[i].length - 2; j++) {
+              if (j == 4 || j == 6 || j == 7 || j == 9) {
+                continue
+              }
 
-          // console.log(tContent); //除錯用
+              let rowCell = tableRow.insertCell();
+              if (j == 10) {
+                if (parseFloat(data[i][8]) - parseFloat(data[i][5]) > 0) {
+                  rowCell.innerHTML = `<span style='color:red'>+${(parseFloat(data[i][8]) - parseFloat(data[i][5])).toFixed(2)}</span>`
+                } else if (parseFloat(data[i][8]) - parseFloat(data[i][5]) < 0) {
+                  rowCell.innerHTML = `<span style='color:green'>${(parseFloat(data[i][8]) - parseFloat(data[i][5])).toFixed(2)}</span>`
+                }else{
+                rowCell.innerHTML = (parseFloat(data[i][8]) - parseFloat(data[i][5])).toFixed(2)
+                }
+              }else{
+                rowCell.innerHTML = data[i][j];
+              }
 
-          // let tContentL = tContent.length - 1;
-          // for (let i = tContentL; i > 0; i--) {
-          //   let tableRow = table.insertRow();
-          //   for (let j = 0; j < tContent[i].length; j++) {
-          //     let rowTd = tableRow.insertCell();
-          //     rowTd.innerHTML = tContent[i][j];
-          //   }
-          // }
+
+            }
+          }
 
         });
 
     }
 
+    // CORS組驵
+    // function immediateStock(stocktype, stockNum) {
+    //   https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=${stocktype}_${stockNum}.tw&json=1&delay=0
+    //   fetch(`https://mis.twse.com.tw/stock/api/getStock.jsp?ch=2330.tw&json=1`)
+    //     .then((res) => {
+    //       const data = res.json();
+    //       return data;
+    //     })
+    //     .then((stock) => {
+    //       console.log(stock);
+    //     });
+    // }
+
 
     document.getElementById("searchStockBtn").onclick = function () {
       let stockNum = document.getElementById("searchStock").value;
-      let stockType = document.getElementById("stockType").value;
 
-      // date = getTodayDate();
+      date = getTodayDate();
 
-      immediateStock(stockType, stockNum)
+      getTenDay(date, stockNum)
     }
 
     window.onload = function () {
       let date = getLastTradeDate();
       // console.log(date);
-
       document.getElementsByClassName("top20Title")[0].innerHTML = `${date} 成交股數前20名`
-      function top20stocks(idname) {
-        fetch(`https://www.twse.com.tw/exchangeReport/MI_INDEX20?&date=${date}`)
-          .then((res) => {
-            const data = res.json();
-            return data;
-          })
-          .then((result) => {
-
-            // if (result.stat === "很抱歉，沒有符合條件的資料!") {
-
-            // }
-            // console.log(result);
-            let data = result.data;
-            let tableTitle = result.fields;
-
-            let container = document.getElementById(`${idname}`);
-            let table = document.createElement("table");
-            table.classList.add("top20table");
-            table.setAttribute("border", "1");
-
-            // 取欄位名稱
-            // console.log(tableTitle);
-
-            let row = table.insertRow();
-            for (let i = 0; i < tableTitle.length - 2; i++) {
-              let td = row.insertCell();
-              td.innerHTML = tableTitle[i];
-            }
-            container.appendChild(table);
-
-            // 取資料
-            for (let i = 0; i < data.length; i++) {
-              let tableRow = table.insertRow();
-              for (let j = 0; j < data[i].length - 2; j++) {
-                let rowCell = tableRow.insertCell();
-                rowCell.innerHTML = data[i][j];
-              }
-            }
-
-          });
-
-      }
 
       top20stocks("top20");
     }
-  
+
   </script>
 </body>
 

@@ -503,10 +503,23 @@ footer .f-content .f-link li a {
   padding-top: 20px;
 }
 .search .searchContainer .l-searchRecord {
+  border: 1px solid black;
   width: 20%;
   display: flex;
+  align-items: center;
   justify-content: center;
   background-color: #bbb;
+  flex-direction: column;
+}
+.search .searchContainer .l-searchRecord h3 {
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid black;
+  font-size: 24px;
+  font-weight: 500;
+}
+.search .searchContainer .l-searchRecord li {
+  font-size: 20px;
 }
 .search .searchContainer .r-search {
   padding-bottom: 15px;

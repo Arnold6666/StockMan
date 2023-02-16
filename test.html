@@ -9,12 +9,18 @@
 </head>
 
 <body>
+  <div id="result"></div>
   <script>
-    fetch('https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_2330.tw&json=1&delay=0')
+    // 集中市場大盤成交資訊(done)                        (?後面加response=html為表格呈現)
+    // -http://www.twse.com.tw/exchangeReport/FMTQIK?&date=20171121
+    http://www.twse.com.tw/exchangeReport/STOCK_DAY_AVG?&date=20230216&stockNo=2330
+
+    fetch('http://www.twse.com.tw/exchangeReport/STOCK_DAY?&date=20171121&stockNo=2330')
       .then((response) => {
         return response.text();
       })
       .then((response) => {
+        document.getElementById("result").innerHTML = response;
         console.log(response);
       })
       .catch((error) => {
