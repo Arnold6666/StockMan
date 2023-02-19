@@ -1,0 +1,106 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Place Details</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+  <style>
+    #map {
+      height: 80%;
+    }
+
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script>
+    function Location(county, sitename, aqi, lat, lng) {
+      this.county = county;
+      this.sitename = sitename;
+      this.aqi = aqi;
+      this.lat = lat;
+      this.lng = lng;
+
+      this.title = county + sitename;
+      this.center = { lat: parseFloat(lat), lng: parseFloat(lng) };
+    }
+
+    window.onload = function () {
+      fetch("https://raw.githubusercontent.com/kirkchu/mongodb/main/aqiv2.json")
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (jsonObj) {
+          let records = [];
+
+          jsonObj["records"].forEach(function (rd) {
+            records.push(new Location(rd.county, rd.sitename, rd.aqi, rd.latitude, rd.longitude))
+          });
+          // console.log(records)
+          // console.log(records[0].center)
+          // pinMarker(records);
+          pinMarkerCluster(records)
+        })
+    }
+
+    function pinMarker(records) {
+      records.forEach(function (rd) {
+        new google.maps.Marker({
+          position: rd.center,
+          map: map,
+          label: rd.aqi
+        })
+      })
+    }
+
+    function pinMarkerCluster(records) {
+      let markers = []
+      records.forEach(function (rd) {
+        markers.push(
+          new google.maps.Marker({
+            position: rd.center,
+            map: map,
+            label: rd.aqi
+          })
+        )
+      })
+      new markerClusterer.MarkerClusterer({ markers, map })
+    }
+
+    let map;
+
+    function initMap() {
+
+      let center = { lat: 23.97413508366366, lng: 120.97975310929014 };
+
+      // let center = { lat: 25.034212989135998, lng: 121.56401856683415 }
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: center,
+        zoom: 7,
+      });
+
+    }
+
+    window.initMap = initMap;
+  </script>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <!-- 
+    The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises
+      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+      -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyXOpDgS5QmETSDFK4jdpCRq3UGRSYB2g&callback=initMap&libraries=places&v=weekly"
+    defer></script>
+</body>
+
+</html>

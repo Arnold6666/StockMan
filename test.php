@@ -1,5 +1,5 @@
 <?php
-$url = "http://www.twse.com.tw/exchangeReport/STOCK_DAY?&date=20230216&stockNo=2330";
+$url = "http://www.twse.com.tw/exchangeReport/FMTQIK?&date=20171121";
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -15,4 +15,4 @@ curl_close($curl);
 
 $response = json_decode($response, true);
 
-var_dump($response) ;
+var_dump($response);
