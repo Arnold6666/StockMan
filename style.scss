@@ -100,15 +100,16 @@ header {
     text-align: center;
     font-size: 24px;
     font-weight: $font-light;
-    
+
     padding: 50px 0;
 
 
-    a, i{
+    a,
+    i {
       color: white;
     }
 
-    li{
+    li {
       margin: 0;
       padding: 20px;
       border-bottom: 2px solid white;
@@ -149,7 +150,7 @@ header {
   padding-top: 56px;
 
   .container {
-    
+
     h2 {
       font-size: 56px;
       font-weight: $font-regular;
@@ -307,7 +308,7 @@ footer {
   }
 
   .f-content {
-
+    display: flex;
     justify-content: space-around;
     align-items: center;
     column-gap: 30px;
@@ -331,9 +332,9 @@ footer {
 
   @media screen and (min-width:768px) {
     .f-content {
-      grid-template-columns: 1fr 3fr;
-
+      
       .f-link {
+        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -444,14 +445,14 @@ footer {
       }
     }
 
-    
+
   }
 
   @media screen and (min-width:768px) {
     .basicContent {
       grid-template-columns: 1fr 3fr !important;
     }
-  
+
     .slideMenu {
       display: block !important;
     }
@@ -463,14 +464,14 @@ footer {
     }
   }
 
-  
+
 }
 
 
 
 // basicConcept end
 
-// Recommend
+// recommendPlatform
 .recommendPlatform {
 
   .recommendTitle {
@@ -587,7 +588,7 @@ footer {
       flex-direction: column;
       border-radius: 10px;
 
-      h3{
+      h3 {
         padding: 10px;
         text-align: center;
         width: 100%;
@@ -596,47 +597,59 @@ footer {
         font-weight: $font-medium;
       }
 
-      li{
-        font-size: 20px;
+      ul{
+        width: 100%;
+
+        li {
+          cursor: pointer;
+          padding: $d3 0;
+          text-align: center;
+          border-bottom: 2px solid $gray;
+          font-size: 20px;
+          border-bottom-left-radius: 10%;
+          border-bottom-right-radius: 10%;
+        }
       }
     }
 
-    @media screen and (min-width:768px){
+    @media screen and (min-width:768px) {
       .l-searchRecord {
         display: flex;
       }
     }
 
-    .r-search{
+    .r-search {
       padding-bottom: $d3;
       width: 70%;
       // background-color: goldenrod;
 
-      .SContainer{
+      .SContainer {
         padding: $d3;
         width: 100%;
 
-        h3{
+        h3 {
           text-align: center;
           font-size: 30px;
           font-weight: $font-regular;
         }
 
-        .searchInput{
+        .searchInput {
           display: flex;
           justify-content: center;
 
-          select, input, button{
+          select,
+          input,
+          button {
             font-size: 24px;
             border: 2px gray solid;
           }
 
-          select{
+          select {
             padding: 0 $d3;
             border-right: none;
           }
-          
-          input{
+
+          input {
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
             border-right: none;
@@ -644,7 +657,7 @@ footer {
             padding-left: 10px;
           }
 
-          button{
+          button {
             padding: 8px 12px;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
@@ -652,9 +665,9 @@ footer {
         }
       }
 
-      .result{
+      .result {
 
-        h1{
+        h1 {
           margin: $d2;
         }
 
@@ -666,48 +679,51 @@ footer {
           border-collapse: collapse;
           border-left: none;
           border-right: none;
-    
-          tr{
+
+          tr {
             border-bottom: 1px solid #ddd;
           }
 
-          @media screen and (max-width:768px){
-            tr{
-              th:nth-of-type(2), th:nth-of-type(3){
+          @media screen and (max-width:768px) {
+            tr {
+
+              th:nth-of-type(2),
+              th:nth-of-type(3) {
                 display: none;
               }
 
-              td:nth-of-type(2), td:nth-of-type(3){
+              td:nth-of-type(2),
+              td:nth-of-type(3) {
                 display: none;
               }
             }
           }
-    
-          tr:last-of-type{
+
+          tr:last-of-type {
             border-bottom: 2px solid #2d484e;
           }
-    
-          tr:nth-of-type(even) td{
+
+          tr:nth-of-type(even) td {
             background-color: #dddddd;
           }
-        
-          th{
+
+          th {
             background-color: #393d3f;
             color: #fff;
             font-weight: $font-medium;
-            padding: 5px ;
+            padding: 5px;
             border-left: none;
             border-right: none;
           }
-    
-          td{
+
+          td {
             background-color: #fff;
-            padding: 5px ;
+            padding: 5px;
             border-left: none;
             border-right: none;
           }
         }
-        
+
       }
     }
 
@@ -718,7 +734,7 @@ footer {
   margin-top: $d4;
   background-color: $gray;
 
-  .container{
+  .container {
 
     padding: $d2;
     margin: 0 auto;
@@ -736,7 +752,7 @@ footer {
     display: flex;
     justify-content: center;
     padding-bottom: $d3;
-    
+
 
     table {
       width: 100%;
@@ -745,42 +761,45 @@ footer {
       border-left: none;
       border-right: none;
 
-      tr{
+      tr {
         border-bottom: 1px solid #ddd;
       }
 
-      @media screen and (max-width:768px){
-        tr{
-          th:nth-of-type(1), th:nth-of-type(4){
+      @media screen and (max-width:768px) {
+        tr {
+
+          th:nth-of-type(1),
+          th:nth-of-type(4) {
             display: none;
           }
 
-          td:nth-of-type(1), td:nth-of-type(4){
+          td:nth-of-type(1),
+          td:nth-of-type(4) {
             display: none;
           }
         }
       }
 
-      tr:last-of-type{
+      tr:last-of-type {
         border-bottom: 2px solid #2d484e;
       }
 
-      tr:nth-of-type(even) td{
+      tr:nth-of-type(even) td {
         background-color: #dddddd;
       }
-    
-      th{
+
+      th {
         background-color: #393d3f;
         color: #fff;
         font-weight: $font-medium;
-        padding: 5px ;
+        padding: 5px;
         border-left: none;
         border-right: none;
       }
 
-      td{
+      td {
         background-color: #fff;
-        padding: 5px ;
+        padding: 5px;
         border-left: none;
         border-right: none;
       }
@@ -792,130 +811,139 @@ footer {
 
 // searchPage end
 
-// Recommend Page
-  .recommend{
-    padding-top: 60px;
-    width: 100%;
+// Recommend Bank
+.recommend {
+  padding-top: 60px;
+  width: 100%;
 
-    .container{
-      display: flex;
-      flex-direction: column;
-      margin: $d4 auto;
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin: $d4 auto;
 
-      .recmdBank{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        column-gap: 25px;
-        row-gap: 25px;
+    .recmdBank {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      column-gap: 25px;
+      row-gap: 25px;
+      width: 100%;
+
+      .flip-card {
+        background-color: transparent;
         width: 100%;
-  
-        .flip-card{
-          background-color: transparent;
-          width: 100%;
 
-          perspective: 1000px;
-  
-          .flip-card-inner{
-            position: relative;
+        perspective: 1000px;
+
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+
+          .flip-card-front {
+            background-color: #bbb;
+            color: black;
+          }
+
+          .flip-card-front,
+          .flip-card-back {
+            position: absolute;
             width: 100%;
             height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-  
-            .flip-card-front{
-              background-color: #bbb;
-              color: black;
-              
-            }
-            
-            .flip-card-front, .flip-card-back{
-              position: absolute;
+            backface-visibility: hidden;
+            border-radius: 5%;
+          }
+
+          .flip-card-back {
+            padding: 0 $d2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #313628;
+            color: #dddddd;
+            transform: rotateY(180deg);
+
+            h1 {
               width: 100%;
-              height: 100%;
-              backface-visibility: hidden;
-              border-radius: 5%;
+              background-color: #bbbbbb8e;
+              padding: $d3;
+              font-size: 30px;
             }
 
-            .flip-card-back{
-              padding: 0 $d2;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              background-color: #313628;
-              color: #dddddd;
-              transform: rotateY(180deg);
-
-              h1{
-                width: 100%;
-                background-color: #bbbbbb8e;
-                padding: $d3;
-                font-size: 30px;
-              }
-
-              p{
-                font-size: 20px;
-              }
-
-              @media screen and (max-width:768px){
-                p{
-                  display: none;
-                }
-              }
+            p {
+              font-size: 20px;
             }
-            img{
-              width: 100%;
-              border-radius: 5%;
-              border: 3px solid #3a3a3a2a;
+
+            @media screen and (max-width:768px) {
+              p {
+                display: none;
+              }
             }
           }
-        }
 
-        .flip-card:hover .flip-card-inner{
-          transform: rotateY(180deg);
+          img {
+            width: 100%;
+            border-radius: 5%;
+            border: 3px solid #3a3a3a2a;
+          }
         }
       }
 
-      .Bankmap{
-        padding: $d3;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        height: 500px;
-
-        .bankSelect{
-          width: 30%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-
-          a{
-            border-radius: 10px;
-            padding: 10px ;
-            border: 2px solid white;
-            background-color: #393d3f;
-            color: white;
-            width: 100%;
-            text-align: center;
-            font-size: 24px;
-            cursor: pointer;
-            transition: 0.6s;
-          }
-
-          a:hover{
-            border: 2px solid #393d3f;
-            background-color: whitesmoke;
-            color: #393d3f;
-          }
-        }
-
-        .map{
-          width: 65%;
-        }
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
       }
     }
 
-    
+    .Bankmap {
+      padding: $d3;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 500px;
+
+      .bankSelect {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        margin-left: $d3;
+        justify-content: space-around;
+
+
+
+        a {
+          border-radius: 10px;
+          padding: 10px;
+          border: 2px solid white;
+          background-color: #393d3f;
+          color: white;
+          width: 100%;
+          text-align: center;
+          font-size: 24px;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+
+        a:hover {
+          border: 2px solid #393d3f;
+          background-color: whitesmoke;
+          color: #393d3f;
+        }
+      }
+
+      @media screen and (min-width:768px){
+        .bankSelect{
+          width: 30%;
+        }
+      }
+
+      .map {
+        width: 65%;
+      }
+    }
   }
+
+}
