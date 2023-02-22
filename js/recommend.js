@@ -10,3 +10,5 @@ menuClose.addEventListener('click', function () {
 navMenu.addEventListener('click', function () {
   mobileMenu.classList.remove("d-none")
 })
+
+

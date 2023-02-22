@@ -1,4 +1,4 @@
-$body-font: 'Noto Sans TC', sans-serif;
+$body-font: 'custom-sans-serif','Noto Sans TC', sans-serif;
 
 :root{
   --normal-font-size: .8rem;
@@ -17,7 +17,7 @@ $gray:#dddddd;
 $black:black;
 $white:white;
 $text-gray:rgb(141, 141, 141);
-$opacity:rgba(255, 255, 255, 0.5);
+$opacity:rgba(255, 255, 255, 0.75);
 
 $font-light:    300;
 $font-regular:  400;

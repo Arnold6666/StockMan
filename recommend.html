@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/markerclustererplus/2.1.4/markerclusterer.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/markerclustererplus/2.1.4/markerclusterer.min.js"></script> -->
 </head>
 
 <body>
@@ -120,7 +120,7 @@
           <a id="taishin">台新證券</a>
         </div>
         <div class="map" id="map" style="overflow: hidden;">
-          <img src="https://picsum.photos/id/666/1200/800" alt="" style="overflow: hidden;">
+          
         </div>
       </div>
     </div>
@@ -129,17 +129,17 @@
   <!-- footer -->
   <footer>
     <div class="m-auto container">
-      <div class="f-content">
+      <div class="f-content d-grid">
         <img src="images/footerLogo.PNG" alt="">
         <div class="f-link">
           <li class="nav-item text-center">
-            <a class="nav-link active" aria-current="page" href="index.html">前往首頁</a>
+            <a class="nav-link active" aria-current="page" href="index.html">首頁</a>
           </li>
           <li class="nav-item text-center">
             <a class="nav-link" href="search.html">查詢股票</a>
           </li>
           <li class="nav-item text-center">
-            <a class="nav-link" href="qa.html">常見問題</a>
+            <a class="nav-link" href="why.html">常見問題</a>
           </li>
         </div>
       </div>
@@ -298,10 +298,11 @@
           new google.maps.Marker({
             position: rd.center,
             map: map,
-            label: rd.sitename
+            title: rd.sitename
           })
         )
       })
+      
       const markerCluster = new markerClusterer.MarkerClusterer({ map, markers });
 
       document.getElementById("skis").addEventListener("click", function () {
@@ -319,7 +320,7 @@
             new google.maps.Marker({
               position: rd.center,
               map: map,
-              label: rd.sitename
+              title: rd.sitename
             })
           )
         })
@@ -341,7 +342,7 @@
             new google.maps.Marker({
               position: rd.center,
               map: map,
-              label: rd.sitename
+              title: rd.sitename
             })
           )
         })
@@ -363,7 +364,7 @@
             new google.maps.Marker({
               position: rd.center,
               map: map,
-              label: rd.sitename
+              title: rd.sitename
             })
           )
         })
@@ -385,7 +386,7 @@
             new google.maps.Marker({
               position: rd.center,
               map: map,
-              label: rd.sitename
+              title: rd.sitename
             })
           )
         })
@@ -407,7 +408,7 @@
             new google.maps.Marker({
               position: rd.center,
               map: map,
-              label: rd.sitename
+              title: rd.sitename
             })
           )
         })
@@ -429,7 +430,7 @@
             new google.maps.Marker({
               position: rd.center,
               map: map,
-              label: rd.sitename
+              title: rd.sitename
             })
           )
         })
@@ -460,7 +461,7 @@
           new google.maps.Marker({
             position: rd.center,
             map: map,
-            label: rd.sitename
+            title: rd.sitename
           })
         )
       })
@@ -484,9 +485,9 @@
     //   new markerClusterer.clearMakers(true);
     // }
   </script>
-  <!-- <script
+  <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyXOpDgS5QmETSDFK4jdpCRq3UGRSYB2g&callback=initMap&libraries=places&v=weekly"
-    defer></script> -->
+    defer></script>
 </body>
 
 </html>

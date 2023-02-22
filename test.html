@@ -10,20 +10,21 @@
 
 <body>
   <div id="result"></div>
-  <div class="bankSelect">
+  <!-- <div class="bankSelect">
     <a id="skis">新光證券</a>
     <a id="cathay">國泰證券</a>
     <a id="fugle">玉山富果</a>
     <a id="sinopac">永豐金證券</a>
     <a id="yuanto">元大證券</a>
-    <a id="taishin">台新證券</a>
+    <a id="taishin">台新證券</a> -->
   </div>
   <script>
     // 集中市場大盤成交資訊(done)                        (?後面加response=html為表格呈現)
     // -http://www.twse.com.tw/exchangeReport/FMTQIK?&date=20171121
     // http://www.twse.com.tw/exchangeReport/STOCK_DAY_AVG?&date=20230216&stockNo=2330
 
-    // fetch('http://www.twse.com.tw/exchangeReport/FMTQIK?&date=20171121')
+    // https://apiservice.mol.gov.tw/OdService/download/A17000000J-030243-YTl
+    // fetch('https://apiservice.mol.gov.tw/OdService/download/A17000000J-030243-YTl')
     //   .then((response) => {
     //     return response.text();
     //   })
@@ -34,11 +35,13 @@
     //   .catch((error) => {
     //     console.log(`Error: ${error}`);
     //   })
+    let val = 'p   -0.86';
+    console.log(val.substr(1,val.length))
 
-    let bankList = ["skis","cathay","fugle","sinopac","yuanto","taishin"];
-    let bankbutton = bankList.map((x)=>{document.getElementById(`${x}`)});
-    console.log(bankList.map((x)=>{document.getElementById(`${x}`)}));
-    console.log(document.getElementById(`skis`));
+    // let bankList = ["skis","cathay","fugle","sinopac","yuanto","taishin"];
+    // let bankbutton = bankList.map((x)=>{document.getElementById(`${x}`)});
+    // console.log(bankList.map((x)=>{document.getElementById(`${x}`)}));
+    // console.log(document.getElementById(`skis`));
   </script>
 </body>
 
