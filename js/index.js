@@ -89,4 +89,51 @@ document.getElementsByClassName("dot")[2].addEventListener("click", function () 
   clearInterval(automove);
   automove = setInterval(autoSlides, 5000)
 });
-    // carousel end
+// carousel end
+
+window.onload = function () {
+  getEcIndex();
+}
+
+function getEcIndex() {
+  fetch('https://apiservice.mol.gov.tw/OdService/rest/datastore/A17030000J-000016-1ci')
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      let data = response.result.records[12];
+      console.log(data);
+
+      // 取key
+      key = new Array();
+      for (x in data) { key[key.length] = x };
+      console.log(key);
+
+      // 取value
+      val = []
+      Object.values(data).forEach((item) => val.push(item));
+      console.log(val)
+
+      document.getElementById("month").innerHTML = data.月別;
+      document.getElementById("cpi").innerHTML = val[13];
+      document.getElementById("cpiTitle").innerHTML = key[13];
+
+      document.getElementById("eG").innerHTML = parseFloat(val[1].substr(1, val[1].length));
+      document.getElementById("eGTitle").innerHTML = `${key[1]}`;
+      let span = document.createElement("span");
+      span.innerHTML = " %"
+      document.getElementById("eG").appendChild(span);
+
+      document.getElementById("cpiG").innerHTML = val[14];
+      document.getElementById("cpiGTitle").innerHTML = key[14];
+      console.log(val[14]);
+      console.log(key[14]);
+      let span3 = document.createElement("span");
+      span3.innerHTML = " %"
+      document.getElementById("cpiG").appendChild(span3);
+
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}

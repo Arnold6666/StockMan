@@ -5,15 +5,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>StockMan</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/logo2.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
   <header>
     <nav class="topNav">
-      <div class="leftNav"><img src="images/logoTitlr.JPG" alt="StockManTextLogo"></div>
+      <div class="leftNav"><img src="images/logoTitlr2.PNG" alt="StockManTextLogo"></div>
       <div class="rightNav">
         <li><a href="index.html">首頁</a></li>
         <li class="active"><a href="why.html">理財與股票</a></li>
@@ -284,7 +286,7 @@
     </div>
     <div class="container m-auto">
       <!-- 1 -->
-      <div class="r-item">
+      <div class="r-item d-none" id="gooaye">
         <img class="r-img" src="images/gooaye.webp" alt="股癌">
         <div class="r-text">
           <div class="text">
@@ -296,7 +298,7 @@
         </div>
       </div>
       <!-- 2 -->
-      <div class="r-item">
+      <div class="r-item d-none">
         <img class="r-img" src="images/investmentAddiction.webp" alt="投資癮">
         <div class="r-text">
           <div class="text">
@@ -308,7 +310,7 @@
         </div>
       </div>
       <!-- 3 -->
-      <div class="r-item">
+      <div class="r-item d-none">
         <img class="r-img" src="images/mulia.webp" alt="Miula">
         <div class="r-text">
           <div class="text">
@@ -320,7 +322,7 @@
         </div>
       </div>
       <!-- 4 -->
-      <div class="r-item">
+      <div class="r-item d-none">
         <img class="r-img" src="images/MacroMicro.webp" alt="財經M平方">
         <div class="r-text">
           <div class="text">
@@ -332,7 +334,7 @@
         </div>
       </div>
       <!-- 5 -->
-      <div class="r-item">
+      <div class="r-item d-none">
         <img class="r-img" src="images/dog.webp" alt="財報狗">
         <div class="r-text">
           <div class="text">
@@ -344,7 +346,7 @@
         </div>
       </div>
       <!-- 6 -->
-      <div class="r-item">
+      <div class="r-item d-none">
         <img class="r-img" src="images/stockInvisible.webp" alt="股市隱者">
         <div class="r-text">
           <div class="text">
@@ -377,6 +379,32 @@
     </div>
   </footer>
   <script src="js/why.js"></script>
+  <script>
+    window.onload = function () {
+      let rItem = document.getElementsByClassName("r-item");
+      window.addEventListener("scroll", function () {
+        var scroll = window.scrollY;
+        if(scroll >= 900){
+          rItem[0].classList.add("animate__animated", "animate__fadeInTopLeft");
+          rItem[0].classList.remove("d-none");
+          rItem[1].classList.add("animate__animated", "animate__fadeInDown");
+          rItem[1].classList.remove("d-none");
+          rItem[2].classList.add("animate__animated", "animate__fadeInTopRight");
+          rItem[2].classList.remove("d-none");
+        }
+
+        if(scroll >= 1200){
+          rItem[3].classList.add("animate__animated", "animate__fadeInBottomLeft");
+          rItem[3].classList.remove("d-none")
+          rItem[4].classList.add("animate__animated", "animate__fadeInUp");
+          rItem[4].classList.remove("d-none")
+          rItem[5].classList.add("animate__animated", "animate__fadeInBottomRight");
+          rItem[5].classList.remove("d-none");
+        }
+      });
+    }
+  </script>
+
 </body>
 
 </html>

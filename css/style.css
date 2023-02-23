@@ -95,7 +95,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 25px;
 }
 .topNav .leftNav {
   display: flex;
@@ -106,15 +106,22 @@ header {
 }
 .topNav .rightNav {
   display: none;
-  width: 400px;
+  min-width: 470px;
   font-size: 18px;
   justify-content: space-around;
 }
 .topNav .rightNav li a {
+  border-radius: 20px;
+  padding: 10px;
+  transition: 0.6s;
   color: rgb(141, 141, 141);
 }
 .topNav .rightNav li.active a {
   color: white;
+}
+.topNav .rightNav li:hover a {
+  background-color: white;
+  color: black;
 }
 .topNav .navMenu {
   font-size: 2rem;
@@ -191,6 +198,15 @@ header {
   font-size: 18px;
   font-weight: 500;
 }
+@media screen and (max-width: 768px) {
+  .origin .container p {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .origin .container p span {
+    display: none;
+  }
+}
 .origin .container p.quote {
   padding: 0 80px;
   font-weight: 400;
@@ -209,11 +225,17 @@ header {
 }
 .carContainer .carouselImg {
   display: none;
-  max-height: 853px;
   overflow: hidden;
 }
 .carContainer .carouselImg img {
+  object-fit: cover;
+  height: 800px;
   width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .carContainer .carouselImg img {
+    height: 600px;
+  }
 }
 .carContainer .carouselImg h3 {
   font-size: 28px;
@@ -256,19 +278,27 @@ header {
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
-  bottom: 10%;
+  bottom: 15%;
   left: 20%;
   width: 60%;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 20px;
 }
+@media screen and (max-height: 768px) {
+  .carContainer .carouseltext {
+    font-size: 12px;
+  }
+}
 .carContainer .carouselDots {
   display: flex;
   justify-content: center;
   position: absolute;
   bottom: 5%;
-  left: calc(50% - 25px);
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.25);
+  left: calc(50% - 47px);
 }
 .carContainer .carouselDots .dot {
   cursor: pointer;
@@ -306,13 +336,14 @@ header {
   font-weight: 400;
   text-align: center;
   margin-bottom: 10px;
+  padding: 15px;
 }
 .eIndex .countryIndex {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 15px;
-  row-gap: 15px;
+  column-gap: 20px;
+  row-gap: 20px;
 }
 .eIndex .countryIndex div[class^=col] {
   background-position: center;
@@ -333,6 +364,11 @@ header {
   color: #B8DBD9;
   font-weight: 500;
 }
+@media screen and (max-width: 768px) {
+  .eIndex .countryIndex h3 {
+    font-size: 14px;
+  }
+}
 .eIndex .countryIndex p {
   font-size: 18px;
   background-color: rgba(0, 0, 0, 0.4039215686);
@@ -340,6 +376,11 @@ header {
   width: 100%;
   color: white;
   text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .eIndex .countryIndex p {
+    font-size: 14px;
+  }
 }
 
 footer {
@@ -353,6 +394,7 @@ footer img {
 footer .f-content {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   column-gap: 30px;
   font-size: 20px;
@@ -370,6 +412,9 @@ footer .f-content .f-link li a {
   font-weight: 300;
 }
 @media screen and (min-width: 768px) {
+  footer .f-content {
+    flex-direction: row;
+  }
   footer .f-content .f-link {
     width: 100%;
     display: flex;
@@ -437,6 +482,7 @@ footer .f-content .f-link li a {
 .basicConcept .basicContent .mainContent h3 span {
   font-size: 24px;
   font-weight: 700;
+  transition: 0.6s;
 }
 .basicConcept .basicContent .mainContent p {
   margin-top: 5px;
@@ -489,6 +535,7 @@ footer .f-content .f-link li a {
 }
 .recommendPlatform .recommendTitle p {
   margin: 0;
+  padding: 0 20px;
   padding-bottom: 10px;
   text-align: center;
   font-size: 24px;
@@ -503,11 +550,12 @@ footer .f-content .f-link li a {
   margin-bottom: 20px;
 }
 .recommendPlatform .container .r-item {
-  border: 3px solid rgba(170, 170, 170, 0.85);
+  padding: 0 15px;
   position: relative;
   width: 100%;
 }
 .recommendPlatform .container .r-item .r-img {
+  border: 3px solid rgba(170, 170, 170, 0.85);
   width: 100%;
   opacity: 1;
   display: block;
@@ -685,6 +733,11 @@ footer .f-content .f-link li a {
   border-left: none;
   border-right: none;
 }
+@media screen and (max-width: 768px) {
+  .search .searchContainer .r-search {
+    width: 90%;
+  }
+}
 
 .top20Section {
   margin-top: 20px;
@@ -854,11 +907,13 @@ footer .f-content .f-link li a {
   color: #393d3f;
 }
 @media screen and (min-width: 768px) {
+  .recommend .container .Bankmap .bankSelect a {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 768px) {
   .recommend .container .Bankmap .bankSelect {
     width: 30%;
-  }
-  .recommend .container .Bankmap a {
-    font-size: 24px;
   }
 }
 .recommend .container .Bankmap .map {
