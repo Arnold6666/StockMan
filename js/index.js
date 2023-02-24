@@ -4,11 +4,12 @@ let mobileMenu = document.getElementsByClassName("mobileMenu")[0];
 let navMenu = document.getElementsByClassName("navMenu")[0];
 
 menuClose.addEventListener('click', function () {
-  mobileMenu.classList.add("d-none");
+  // mobileMenu.classList.add("d-none");
+  mobileMenu.style.transform ="translateY(-100%)";
 })
 
 navMenu.addEventListener('click', function () {
-  mobileMenu.classList.remove("d-none")
+  mobileMenu.style.transform ="translateY(0%)";
 })
 
 // Carousel
@@ -58,7 +59,8 @@ function showSlides(n) {
 }
 
 let slideIndex = 0;
-// let automove = setInterval(autoSlides, 5000); //透過變數已供clearInterval使用
+let automove = setInterval(autoSlides, 5000); //透過變數已供clearInterval使用
+automove;
 function autoSlides() {
   let i;
   let slides = document.getElementsByClassName("carouselImg");
@@ -69,8 +71,8 @@ function autoSlides() {
   if (slideIndex > slides.length) { slideIndex = 1 }
   slides[slideIndex - 1].style.display = "block";
 
-  // let d = new Date();
-  // console.log(d); 除錯用
+  d = new Date();
+  // console.log(d); //除錯用
 }
 
 // dot click
@@ -93,6 +95,7 @@ document.getElementsByClassName("dot")[2].addEventListener("click", function () 
 
 window.onload = function () {
   getEcIndex();
+
 }
 
 function getEcIndex() {
@@ -102,17 +105,17 @@ function getEcIndex() {
     })
     .then((response) => {
       let data = response.result.records[12];
-      console.log(data);
+      // console.log(data);
 
       // 取key
       key = new Array();
       for (x in data) { key[key.length] = x };
-      console.log(key);
+      // console.log(key);
 
       // 取value
       val = []
       Object.values(data).forEach((item) => val.push(item));
-      console.log(val)
+      // console.log(val)
 
       document.getElementById("month").innerHTML = data.月別;
       document.getElementById("cpi").innerHTML = val[13];
@@ -126,8 +129,8 @@ function getEcIndex() {
 
       document.getElementById("cpiG").innerHTML = val[14];
       document.getElementById("cpiGTitle").innerHTML = key[14];
-      console.log(val[14]);
-      console.log(key[14]);
+      // console.log(val[14]);
+      // console.log(key[14]);
       let span3 = document.createElement("span");
       span3.innerHTML = " %"
       document.getElementById("cpiG").appendChild(span3);

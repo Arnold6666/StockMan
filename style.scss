@@ -87,8 +87,8 @@ header {
       }
     }
 
-    li:hover{
-      a{
+    li:hover {
+      a {
         background-color: white;
         color: black;
       }
@@ -102,7 +102,7 @@ header {
   }
 
   .mobileMenu {
-    background-color: rgba(20, 22, 15, 0.801);
+    background-color: rgba(20, 20, 20, 0.80);
     position: absolute;
     top: 0;
     left: 0;
@@ -110,16 +110,15 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: 100vh;
     color: $black;
     width: 100%;
     text-align: center;
     font-size: 24px;
     font-weight: $font-light;
-
     padding: 50px 0;
-
-
+    transition: 0.6s;
+    
     a,
     i {
       color: white;
@@ -129,7 +128,7 @@ header {
       margin: 0;
       padding: 20px;
       border-bottom: 2px solid white;
-      background-color: #857f74;
+      background-color: #8b8b8bb6;
       width: 100%;
     }
   }
@@ -188,12 +187,13 @@ header {
         font-weight: $font-medium;
       }
     }
+
     @media screen and (max-width:768px) {
-      p{
+      p {
         font-size: 18px;
         letter-spacing: 2px;
 
-        span{
+        span {
           display: none;
         }
       }
@@ -233,11 +233,7 @@ header {
       width: 100%;
     }
 
-    @media screen and (max-width:768px) {
-      img {
-        height: 600px;
-      }
-    }
+
 
     h3 {
       font-size: 28px;
@@ -255,6 +251,17 @@ header {
       color: #414e4e;
     }
 
+    @media screen and (max-width:768px) {
+      img {
+        height: 600px;
+      }
+      h3{
+        font-size: 24px;
+      }
+      .imgText{
+        font-size: 16px;
+      }
+    }
   }
 
   .prevImg,
@@ -305,7 +312,7 @@ header {
     border-radius: 20px;
   }
 
-  @media screen and (max-height:768px){
+  @media screen and (max-height:768px) {
     .carouseltext {
       font-size: 12px;
     }
@@ -400,8 +407,8 @@ header {
       font-weight: $font-medium;
     }
 
-    @media screen and (max-width:768px){
-      h3{
+    @media screen and (max-width:768px) {
+      h3 {
         font-size: 14px;
       }
     }
@@ -415,8 +422,8 @@ header {
       text-align: center;
     }
 
-    @media screen and (max-width:768px){
-      p{
+    @media screen and (max-width:768px) {
+      p {
         font-size: 14px;
       }
     }
@@ -463,6 +470,7 @@ footer {
   @media screen and (min-width:768px) {
     .f-content {
       flex-direction: row;
+
       .f-link {
         width: 100%;
         display: flex;
@@ -661,7 +669,7 @@ footer {
       }
     }
 
-  
+
 
     .text {
       background-color: #3a3a3aad;
@@ -866,7 +874,7 @@ footer {
     }
 
     @media screen and (max-width:768px) {
-      .r-search{
+      .r-search {
         width: 90%;
       }
     }
