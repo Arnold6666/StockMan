@@ -28,7 +28,13 @@ let menuClose = document.getElementsByClassName("menuClose")[0];
       if (day.length == 1) {
         day = "0" + day;
       }
-      return year + month + day;
+
+      date = year + month + day;
+      if(date === "20230300"){
+        data = "20230224"
+      }
+      console.log(data);
+      return date;      
     }
 
     function getLastTradeDate() {
@@ -62,6 +68,10 @@ let menuClose = document.getElementsByClassName("menuClose")[0];
       let date = year + month + day;
 
       date = (parseInt(date) - 1).toString();
+      if(date === "20230300"){
+        data = "20230224"
+      }
+      console.log(data)
 
       return date;
     }
@@ -163,6 +173,8 @@ let menuClose = document.getElementsByClassName("menuClose")[0];
           h1.style.textAlign = "center";
           h1.appendChild(title);
           container.appendChild(h1);
+          document.getElementById("chart_div").innerHTML = ""
+          console.log("done")
         })
     }
 
