@@ -384,7 +384,9 @@
       let rItem = document.getElementsByClassName("r-item");
       window.addEventListener("scroll", function () {
         var scroll = window.scrollY;
-        if(scroll >= 900){
+        // console.log(scroll)
+        if(scroll >= 850){
+          // console.log("850")
           rItem[0].classList.add("animate__animated", "animate__fadeInTopLeft");
           rItem[0].classList.remove("d-none");
           rItem[1].classList.add("animate__animated", "animate__fadeInDown");
