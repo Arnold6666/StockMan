@@ -118,7 +118,7 @@ header {
     font-weight: $font-light;
     padding: 50px 0;
     transition: 0.6s;
-    
+
     a,
     i {
       color: white;
@@ -255,10 +255,12 @@ header {
       img {
         height: 600px;
       }
-      h3{
+
+      h3 {
         font-size: 24px;
       }
-      .imgText{
+
+      .imgText {
         font-size: 16px;
       }
     }
@@ -876,9 +878,13 @@ footer {
     @media screen and (max-width:768px) {
       .r-search {
         width: 90%;
-      }
-    }
 
+        div#charchart_div {
+          display: none;
+        }
+      }
+
+    }
   }
 }
 

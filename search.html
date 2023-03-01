@@ -390,24 +390,6 @@
 
           google.charts.load('current', { packages: ['corechart', 'bar'] });
           google.charts.setOnLoadCallback(drawChart);
-
-
-          const target = document.getElementById('chart_div');
-
-          // 建立一個 MutationObserver
-          const observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-              // console.log(document.querySelector("div[dir='ltr']"))
-              document.querySelector("svg[aria-label='A chart.']").setAttribute("width","100%")
-              document.querySelector("div[dir='ltr']").style.width = "100%";
-            });
-          });
-
-          // 設定 MutationObserver 的觀察目標和選項
-          const config = { childList: true, characterData: true, subtree: true };
-
-          // 將 MutationObserver 連結到觀察目標上
-          observer.observe(target, config);
         })
         .catch((error) => {
           console.log(`Error: ${error}`);

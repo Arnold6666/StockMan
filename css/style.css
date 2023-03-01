@@ -744,6 +744,9 @@ footer .f-content .f-link li a {
   .search .searchContainer .r-search {
     width: 90%;
   }
+  .search .searchContainer .r-search div#charchart_div {
+    display: none;
+  }
 }
 
 .top20Section {
