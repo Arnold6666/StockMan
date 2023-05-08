@@ -6,40 +6,57 @@ import {
   MessageList,
   Message,
   MessageInput,
+  TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
 export default function Chatgpt() {
-  const [messages, setMessages] = useState([{
-    messages: "Hello, I am ChatGPT!",
-    sender: "ChatGPT"
-  }]);
+
+  const [typing, setTyping] = useState(false);
+
+  const [messages, setMessages] = useState([
+    {
+      message: "Hello, I am ChatGPT!",
+      sender: "ChatGPT",
+    }
+  ]);
 
   const handleSend = async (message) => {
+
     const newMessage = {
       message: message,
-      sender:"user"
+      sender: "user",
+      direction: "outgoing"
     }
 
-    const newMessages = [...messages, newMessage];
+    // 更新 messages state
+    const newMessages = [...messages, newMessage]; // 所有舊訊息，加上新訊息
 
     setMessages(newMessages);
-    // 更新 messages state
+
+    // 設定一個等候中的顯示訊息
+    setTyping(true);
     // 處理給chatGpt的請求與回復
 
   }
 
   return (
-    <div style={{ position: "relative", height: "800px", width: "700px" }}>
-      <MainContainer>
-        <ChatContainer>
-          <MessageList>
-            {message.map((message,i)=>{
-              return <Message key={i} modal={message}/>
-            })}
-          </MessageList>
-          <MessageInput placeholder='Type message here' onsend={handleSend}/>
-        </ChatContainer>
-      </MainContainer>
-    </div>
+    <section className='container'>
+      <div className='position-relative col-8 mx-auto' style={{height:"800px"}}>
+        <MainContainer>
+          <ChatContainer>
+            <MessageList
+              typingIndicator={ typing ? <TypingIndicator content="正在回覆中"/> : null}
+            >
+              {messages.map((message, i) => {
+                return <Message key={i} model={message} />
+              })}
+
+            </MessageList>
+            <MessageInput placeholder="輸入相關問題" onsend={handleSend} />
+          </ChatContainer>
+        </MainContainer>
+      </div>
+    </section>
+
   )
 }
