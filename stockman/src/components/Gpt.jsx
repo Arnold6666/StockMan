@@ -12,6 +12,12 @@ import axios from 'axios';
 
 
 export default function Chatgpt() {
+  
+  if(sessionStorage.getItem("key") === null){
+      sessionStorage.setItem('key', prompt("請輸入您的 OpenAI API key"))
+  }
+
+  console.log(sessionStorage.getItem("key"));
 
   const [typing, setTyping] = useState(false);
 
@@ -23,8 +29,9 @@ export default function Chatgpt() {
   ]);
 
   const handleSend = async (message) => {
-    console.log('123');
-    console.log(message)
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${sessionStorage.getItem("key")}`;
+
     const newMessage = {
       message,
       sender: "user",
@@ -42,10 +49,8 @@ export default function Chatgpt() {
     await processMessageToChatGPT(newMessages);
   }
 
-  axios.defaults.headers.common['Authorization'] = `Bearer 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`
-
   async function processMessageToChatGPT(chatMessages) {
-    //chatMessages {sender: "user" or "ChatGPT", message: "The message content here"}
+    // chatMessages {sender: "user" or "ChatGPT", message: "The message content here"}
     // apiMessages {role: "user" or "assistant", message: "The message content here"}
 
     let apiMessages = chatMessages.map((messageObject) => {
@@ -74,27 +79,6 @@ export default function Chatgpt() {
       ]
     }
 
-    // await fetch('https://api.openai.com/v1/chat/completions', {
-    //   method: "POST",
-    //   headers: {
-    //     "Authorization": "Bearer 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",
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(apiRequestBody)
-    // }).then((data) => {
-    //   console.log(data);
-    //   return data.json();
-    // }).then((data) => {
-    //   console.log(data);
-    //   console.log(data.choices[0].message.content);
-    //   setMessages(
-    //     [...chatMessages, {
-    //       message: data.choices[0].message.content,
-    //       sender: "ChatGPT"
-    //     }]
-    //   )
-    //   setTyping(false);
-    // })
 
     try {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', apiRequestBody, {
