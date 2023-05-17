@@ -20,7 +20,15 @@ export default function Index() {
       const val = Object.values(data);
       console.log(val);
 
-      document.getElementById('month').innerHTML = data.月別;
+      const year = parseInt(data.月別.substr(0, 4));
+      const month = parseInt(data.月別.substr(4, 2));
+
+      const date = new Date(year, month - 1); // JavaScript 中的月份是從 0 開始，所以需要減去 1
+
+      const yearMonthString = `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
+      console.log(yearMonthString);
+
+      document.getElementById('month').innerHTML = yearMonthString;
       valNAN("cpi", key[13]);
       document.getElementById("cpiTitle").innerHTML = key[13];
 
@@ -93,24 +101,24 @@ export default function Index() {
 
       <section className='pt-3'>
         <div className="container">
-          <h2 class="px-5 mb-2 fw-bold"><span id='month'></span> 台灣經濟相關數據</h2>
+          <h2 class="px-5 mb-2 fw-bold text-center"><span id='month'></span> 台灣經濟相關數據</h2>
           <div className='px-5 py-3 justify-content-around d-flex'>
             <div class="card text-bg-dark col-3 border-0">
-              <img src={A1} class="card-img" alt="..."  style={{height:"80px"}}/>
+              <img src={A1} class="card-img" alt="..." style={{ height: "80px" }} />
               <div class="card-img-overlay" style={{ backgroundColor: "rgba(0, 0, 0,0.5)" }}>
                 <h5 class="card-title text-center" id="cpiTitle">消費者物價指數</h5>
                 <p class="card-text text-center" id='cpi'></p>
               </div>
             </div>
             <div class="card text-bg-dark col-3 border-0">
-              <img src={A2} class="card-img " alt="..." style={{height:"80px"}} />
+              <img src={A2} class="card-img " alt="..." style={{ height: "80px" }} />
               <div class="card-img-overlay" style={{ backgroundColor: "rgba(0, 0, 0,0.5)" }}>
                 <h5 class="card-title text-center" id="cpiGTitle">Card title</h5>
                 <p class="card-text text-center" id='cpiG'></p>
               </div>
             </div>
             <div class="card text-bg-dark col-3 border-0">
-              <img src={A3} class="card-img" alt="..."  style={{height:"80px"}}/>
+              <img src={A3} class="card-img" alt="..." style={{ height: "80px" }} />
               <div class="card-img-overlay" style={{ backgroundColor: "rgba(0, 0, 0,0.5)" }}>
                 <h5 class="card-title text-center" id="eGTitle">Card title</h5>
                 <p class="card-text text-center" id="eG"></p>
